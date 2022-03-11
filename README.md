@@ -65,17 +65,11 @@ Exiba a frequência na qual cada LED está piscando no OLED1, da seguinte maneir
 
 ### SleepMode
 
-Faça o microcontrolador entrar em sleepmode.
+Faça o microcontrolador entrar em sleepmode sempre que possível.
  
-## C+
+### Extra / Desejável
 
 - [ ] Usa flags para comunicar `IRQ` com main
 - [ ] Não pisca LED dentro de Handler
-
-## B
-
 - [ ] Mostra barra no OLED indicando o tempo do RTT
-
-## A
-
 - [ ] Usar RTC e exibir o horário no OLED1
