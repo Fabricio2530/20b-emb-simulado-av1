@@ -21,11 +21,31 @@ volatile char tc_flag3;
 
 
 void checa_tc_1(int flag){
-	
+	delay_ms(300);
 	if (flag) {
 		tc_start(TC0, 1);
 	} else {
 		tc_stop(TC0, 1);
+	}
+	
+}
+
+void checa_tc_6(int flag){
+	delay_ms(300);
+	if (flag) {
+		tc_start(TC2, 0);
+		} else {
+		tc_stop(TC2, 0);
+	}
+	
+}
+
+void checa_tc_3(int flag){
+	delay_ms(300);
+	if (flag) {
+		tc_start(TC1, 0);
+		} else {
+		tc_stop(TC1, 0);
 	}
 	
 }
@@ -90,7 +110,7 @@ int main (void)
 	tc_start(TC1, 0);
 	
 	TC_init(TC0, ID_TC1, 1, 5);
-	//tc_start(TC0, 1);
+	tc_start(TC0, 1);
 
 	gfx_mono_draw_string("Aguardando", 0,16, &sysfont);
   /* Insert application code here, after the board has been initialized. */
@@ -98,9 +118,7 @@ int main (void)
 			
 			if (flag_but1) {
 				gfx_mono_draw_string("Botao 1   ", 0,16, &sysfont);
-				tc_stop(TC0, 1);
 				led1_ligado = !led1_ligado;
-				delay_ms(100);
 				checa_tc_1(led1_ligado);
 				flag_but1 = 0;
 			}
@@ -108,12 +126,14 @@ int main (void)
 			if (flag_but2) {
 				gfx_mono_draw_string("Botao 2   ", 0,16, &sysfont);
 				led2_ligado = !led2_ligado;
+				checa_tc_3(led2_ligado);
 				flag_but2 = 0;
 			}
 			
 			if (flag_but3) {
 				gfx_mono_draw_string("Botao 3    ", 0,16, &sysfont);
 				led3_ligado = !led3_ligado;
+				checa_tc_6(led3_ligado);
 				flag_but3 = 0;
 			}
 			
