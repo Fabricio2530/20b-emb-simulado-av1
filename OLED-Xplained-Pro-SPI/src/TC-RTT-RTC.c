@@ -44,18 +44,6 @@ static void RTT_init(float freqPrescale, uint32_t IrqNPulses, uint32_t rttIRQSou
 	
 }
 
-void RTT_Handler(void) {
-	uint32_t ul_status;
-
-	/* Get RTT status - ACK */
-	ul_status = rtt_get_status(RTT);
-
-	/* IRQ due to Time has changed */
-	if ((ul_status & RTT_SR_RTTINC) == RTT_SR_RTTINC) {
-		//pin_toggle(LED_PI2, LED_PI2_IDX_MASK);    // BLINK Led
-		tempo_rtt+=1;
-	}
-}
 
 void RTC_Handler(void) {
 	uint32_t ul_status = rtc_get_status(RTC);
